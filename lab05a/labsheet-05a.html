@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 9.0.0rc2" />
+<title>Labsheet 5a</title>
+<style type="text/css">
+.question {
+   font-weight: bold;
+   font-size: x-large;
+   width: 100%;
+   display: block;
+   color: #527bbd;
+}
+
+.questionpart {
+   font-weight: bold;
+   font-size: large;
+   color: #527bbd;
+}
+
+.mark, .markpart {
+   float: right;
+   margin-left:20px;
+   color: #527bbd;
+}
+
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+}
+
+em {
+  font-style: italic;
+  /* color: navy; */
+}
+
+strong {
+  font-weight: bold;
+  /* color: #083194; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  /* border: 1px solid silver; */
+  border-top: 2px solid #cccccc;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+/*
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+*/
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  /* color: navy; */
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+p > code {
+  /*
+  background: #e3e3e3;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+  */
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  color: #404040;
+}
+div.literalblock > div.content {
+  border-left: 3px solid #cccccc;
+  /*
+  border-radius: 4px;
+  background: #f9f9f9;
+  */
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content, div.listingblock > div.content {
+  border: 1px solid #cccccc;
+  border-left: 3px solid #cccccc;
+  border-radius: 4px;
+}
+
+div.sidebarblock > div.content {
+  background: #f2f2f2;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  background: #f9f9f9;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content pre, div.literalblock > div.content pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 2px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #527bbd;
+  padding-right: 0.5em;
+  width: 3em;
+  min-width: 3em;
+  max-width: 3em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #cccccc;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #cccccc;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  /*
+  color: navy;
+  */
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  /*
+  color: navy;
+  */
+}
+dt.hdlist1 {
+  font-style: italic;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+var head, link;
+
+link = document.createElement("link");
+
+link.rel = "stylesheet";
+
+link.href = "https://einstein.computing.dcu.ie/fonts/fonts.css";
+
+head = document.getElementsByTagName("head")[0];
+
+head.appendChild(link);
+
+console.log("asciidoc: smblott theme");
+
+console.log("asciidoc: einstein fonts...\n  " + link.href);
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Labsheet 5a</h1>
+<span id="author">Stephen Blott</span><br />
+<span id="email"><code>&lt;<a href="mailto:stephen.blott@dcu.ie">stephen.blott@dcu.ie</a>&gt;</code></span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Important</div>
+<div class="paragraph"><p>Your solutions to the tasks in sections 1, 2 and 3 <em>must make good use of linear search</em>,
+as described in the <a href="09-linear-search.html">linear search</a> notes.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p><em>Einstein</em>: <a href="/einstein/">link</a>.</p></div>
+<div class="paragraph"><p><em>TermCast</em>: <a href="/termcast/">link</a>.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Character classes</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># Test whether s[i] is a digit.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="color: #FF0000">"0"</span> <span style="color: #990000">&lt;=</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">and</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;=</span> <span style="color: #FF0000">"9"</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Test whether s[i] is not a digit.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;</span> <span style="color: #FF0000">"0"</span> <span style="color: #0000FF">or</span> <span style="color: #FF0000">"9"</span> <span style="color: #990000">&lt;</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Test whether s[i] is a lower-case letter.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="color: #FF0000">"a"</span> <span style="color: #990000">&lt;=</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">and</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;=</span> <span style="color: #FF0000">"z"</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Test whether s[i] is an upper-case letter.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="color: #FF0000">"A"</span> <span style="color: #990000">&lt;=</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">and</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;=</span> <span style="color: #FF0000">"Z"</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Test whether s[i] is a letter (upper or lower case).</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="color: #990000">(</span><span style="color: #FF0000">"a"</span> <span style="color: #990000">&lt;=</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">and</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;=</span> <span style="color: #FF0000">"z"</span><span style="color: #990000">)</span> <span style="color: #0000FF">or</span> <span style="color: #990000">(</span><span style="color: #FF0000">"A"</span> <span style="color: #990000">&lt;=</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">and</span> s<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;=</span> <span style="color: #FF0000">"Z"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>These tests work because string comparison uses the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>
+character ordering, in which the various character classes are contiguous.</p></div>
+<div class="paragraph"><p>Also, perhaps read the ASCII manual page.</p></div>
+<div class="paragraph"><p>In the terminal, type "man ascii" (use "q" to quit).</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_first_characters">First characters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_first_digit">First digit</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-digit.py</code> which writes the first digit in $s$ and its position to standard output.</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain a digit.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>abc 188 efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>1 4</code></pre>
+</div></div>
+<div class="paragraph"><p>The $1$ is the first digit in the input text, and it is at position $4$.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>abc efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+<div class="paragraph"><p>There are no digits in the input, therefore the output is empty.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_first_capital">First capital</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-capital.py</code> which writes the first
+upper-case letter in $s$ and its position to standard output</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain a capital letter.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>and everywhere that Mary went</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>M 20</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>the lamb was sure to go.</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_first_space">First space</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-space.py</code> which writes <strong>just the
+position</strong> of the first space character in $s$ to standard output.</p></div>
+<div class="paragraph"><p>Your script should output -1 if $s$ does not contain a space character.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>and everywhere that Mary went</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>3</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>the_lamb_was_sure_to_go.</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>-1</code></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_first_non_space">First non-space</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-non-space.py</code> which writes
+just the position of the first <em>non-space character</em> in $s$ to standard
+output.</p></div>
+<div class="paragraph"><p>Your script should output -1 if $s$ does not contain a non-space character.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>    everywhere that Mary went</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>4</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>                        # &lt;-- (there are no non-space characters here)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>-1</code></pre>
+</div></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sequences_of_characters">Sequences of characters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_first_number">First number</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-number.py</code> which writes the first number in $s$ and its position to standard output.</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain a number.</p></div>
+<div class="paragraph"><p>Take a number to be any contiguous sequence of one or more digits.  You must include all contiguous digits in your output.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>abc 188 efg 911</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>188 4</code></pre>
+</div></div>
+<div class="paragraph"><p>$188$ is the first number, and it appears at position $4$.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>abc efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+<div class="paragraph"><p>There are no digits in the input, so your script should produce no output.</p></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>First search for the position of the first digit; call that position $i$.</p></div>
+<div class="paragraph"><p>Then, <strong>continuing from that position</strong> (so, not in general from position 0), search
+for the position of the next <em>non-digit</em>; call that position $j$.</p></div>
+<div class="paragraph"><p>The characters between these two positions, so $s[i:j]$,  constitute the number.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_first_acronym">First acronym</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-acronym.py</code> which writes the first acronym in $s$ and its position to standard output.</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain an acronym.</p></div>
+<div class="paragraph"><p>Take an acronym to be any contiguous sequence of one or more upper-case letters.  You must include all contiguous capital letters in your output.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>call the FBI, Skippy</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>FBI 9</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>abc efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_first_pair">First pair</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>first-pair.py</code> which writes the first pair of
+adjacent identical characters in $s$ to standard output.</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain such a pair.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>Mary had a little lamb,</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>tt</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>abc efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Start at position 1 instead of 0, and on each iteration consider the characters at positions $i$ and $i-1$.</p></div>
+<div class="paragraph"><p>You are searching for the position $i$ of the first character such that the
+characters at positions $i$ and $i-1$ are the same.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_second_number">Second number</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text $s$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>second-number.py</code> which writes the <em>second
+number</em> in $s$ and its position to standard output.</p></div>
+<div class="paragraph"><p>Your script should produce no output if $s$ does not contain at least two numbers.</p></div>
+<div class="paragraph"><p>Take a number to be as defined above.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>abc 188 efg 911 abc 123</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>911 12</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>abc efg</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_tasks">Additional tasks</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_palindrome">Palindrome</h3>
+<div class="quoteblock">
+<div class="content">
+<div class="paragraph"><p>A <em>palindrome</em> is a word or text which reads the same backwards and forwards.</p></div>
+<div class="paragraph"><p>For example: "<em>rotator</em>".</p></div>
+</div>
+<div class="attribution">
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text containing a word $w$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>palindrome-string.py</code> which writes the
+message "palindrome" to standard output if $w$ is a palindrome, and produces no output
+otherwise.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>rotator</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>palindrome</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>rotators</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>                                                 # Empty!</code></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Do <strong>not</strong> reverse the string and then compare.</p></div>
+<div class="paragraph"><p>That would be unnecessary, and expensive for long strings.</p></div>
+<div class="paragraph"><p>Use linear search.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parse_float">Parse float</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text, that text being a floating-point number $f$.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>parse-float.py</code> which writes the integer part
+of $f$ and the fractional part of $f$ to standard output, each on its own line.</p></div>
+<div class="paragraph"><p>Assume that neither the integer part nor the fractional part of $f$ is ever empty.</p></div>
+<div class="paragraph"><p>The following words <em>may not</em> appear in your solution: "int", "float" and "split".</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>3.14</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>3
+14</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_format_float">Format float</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a number.  That number:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+may be positive or negative,
+</p>
+</li>
+<li>
+<p>
+may be an integer or a floating-point number, and
+</p>
+</li>
+<li>
+<p>
+if it is a floating point number, then the integer part or the fractional
+  part may be empty (but not both, although that doesn&#8217;t actually matter).
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>There are no whitespace characters in the input.</p></div>
+<div class="paragraph"><p>Write a Python script named <code>format-float.py</code> which writes the same number to
+standard output formatted as a floating-point number in which both the
+integer part and the fractional part are present.</p></div>
+<div class="paragraph"><p>See examples.</p></div>
+<div class="paragraph"><p>As before, the following words <em>may not</em> appear in your solution: "int", "float" and "split".</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 1</div>
+<div class="content">
+<pre><code>3.14</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 1</div>
+<div class="content">
+<pre><code>3.14</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 2</div>
+<div class="content">
+<pre><code>3</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 2</div>
+<div class="content">
+<pre><code>3.0</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 3</div>
+<div class="content">
+<pre><code>.321</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 3</div>
+<div class="content">
+<pre><code>0.321</code></pre>
+</div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example standard input 4</div>
+<div class="content">
+<pre><code>-4</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output 4</div>
+<div class="content">
+<pre><code>-4.0</code></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Floating-point inputs might be negative too.</p></div>
+</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_parse_date">Parse date</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a single line of text, a date (see the example for the format).</p></div>
+<div class="paragraph"><p>Write a Python script named <code>parse-date.py</code> which writes the date in the
+format indicated in the example to standard output.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>Tuesday 23rd October, 2018</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>October 23rd, 2018 (Tuesday)</code></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>You should assume that the spacing and punctuation in the input is exactly as indicated in the example, above.</p></div>
+</td>
+</tr></table>
+</div>
+<script src="/einstein/instrument.js"></script>
+<script type="text/javascript" src="https://einstein.computing.dcu.ie/npm/mathjax/MathJax.js?config=AM_CHTML">
+</script>
+
+<script> type="text/javascript"
+   MathJax.Hub.Config({
+     asciimath2jax: { delimiters: [['$','$']] }
+   });
+</script>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2021-10-28 09:38:52 GMT
+</div>
+</div>
+</body>
+</html>
