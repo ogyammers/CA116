@@ -7,9 +7,9 @@ s = input()
 
 while s != "end":
    i = 0
-   while i < len(s):
+   while i < len(s) and not(s[i:i + len(args[0])] == args[0]):
       if s[i:i + len(args[0])] == args[0]:
          print(s)
-         i = len(s)
+         #i = len(s)
       i = i + 1
    s = input()
