@@ -1,0 +1,1543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 9.0.0rc2" />
+<title>While loops 2</title>
+<style type="text/css">
+.question {
+   font-weight: bold;
+   font-size: x-large;
+   width: 100%;
+   display: block;
+   color: #527bbd;
+}
+
+.questionpart {
+   font-weight: bold;
+   font-size: large;
+   color: #527bbd;
+}
+
+.mark, .markpart {
+   float: right;
+   margin-left:20px;
+   color: #527bbd;
+}
+
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+}
+
+em {
+  font-style: italic;
+  /* color: navy; */
+}
+
+strong {
+  font-weight: bold;
+  /* color: #083194; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  /* border: 1px solid silver; */
+  border-top: 2px solid #cccccc;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+/*
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+*/
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  /* color: navy; */
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+p > code {
+  background: #e9e9e9;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+}
+
+div.admonitionblock p > code {
+  background: #f2f2f2;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  color: #404040;
+}
+div.literalblock > div.content {
+  border-left: 3px solid #cccccc;
+  /*
+  border-radius: 4px;
+  background: #f9f9f9;
+  */
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content, div.listingblock > div.content {
+  border: 1px solid #cccccc;
+  border-left: 3px solid #cccccc;
+  border-radius: 4px;
+}
+
+div.sidebarblock > div.content {
+  background: #f2f2f2;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  background: #f9f9f9;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content pre, div.literalblock > div.content pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 2px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #527bbd;
+  padding-right: 0.5em;
+  width: 3em;
+  min-width: 3em;
+  max-width: 3em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #cccccc;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #cccccc;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  /*
+  color: navy;
+  */
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  /*
+  color: navy;
+  */
+}
+dt.hdlist1 {
+  font-style: italic;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+var head, link;
+
+link = document.createElement("link");
+
+link.rel = "stylesheet";
+
+link.href = "https://einstein.computing.dcu.ie/fonts/fonts.css";
+
+head = document.getElementsByTagName("head")[0];
+
+head.appendChild(link);
+
+console.log("asciidoc: morteratsch theme");
+
+console.log("asciidoc: einstein fonts...\n  " + link.href);
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>While loops 2</h1>
+<span id="author">Stephen Blott</span><br />
+<span id="email"><code>&lt;<a href="mailto:stephen.blott@dcu.ie">stephen.blott@dcu.ie</a>&gt;</code></span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_background">Background</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Recall that, syntactically, <code>while</code> loops are very similar to <code>if</code> statements:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #0000FF">while</span> CONDITION<span style="color: #990000">:</span>
+   STATEMENTS<span style="color: #990000">...</span></tt></pre></div></div>
+<div class="paragraph"><p>The <code>STATEMENTS</code> within the block are known as the <em>body of the loop</em>, or the <em>loop body</em>.</p></div>
+<div class="paragraph"><p>The condition, a Boolean expression, is evaluated</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+if it is <code>False</code>, then the loop body is skipped; however,
+</p>
+</li>
+<li>
+<p>
+if it is <code>True</code>, then the body of the loop is executed, and then control returns
+  to the start of the <code>while</code> loop and the condition is tested again.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This is repeated until eventually the condition is <code>False</code>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>One commonly occurring special case is that we know, <em>before entering the loop</em>, how many iterations are required.  In this case we always use the following pattern:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> N<span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="paragraph"><p>See the previous <a href="07-while-1.html">notes on loops</a>.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_tasks">Example tasks</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Consider the following two example tasks.</p></div>
+<div class="paragraph"><p>These two are used as examples throughout, below.</p></div>
+</div></div>
+<div class="sect2">
+<h3 id="_sum">Sum</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of integers, one per line, terminated by a line containing only $0$.</p></div>
+<div class="paragraph"><p>Write a python script which writes the sum of the numbers encountered to standard output.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>3
+5
+2
+3
+5
+2
+2
+0</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>22</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Discussion</div>
+<div class="paragraph"><p>Clearly we need a while loop here, because we must repeatedly read and check each
+input line.</p></div>
+<div class="paragraph"><p>However, <em>we do not know how many times our loop must iterate</em>;  that depends upon the actual input.</p></div>
+<div class="paragraph"><p>Therefore, we cannot use the <em>do-something-$n$-times</em> loop pattern
+discussed previously.</p></div>
+<div class="paragraph"><p>We will need an alternative approach.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_snap">Snap</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of integers, one per line.</p></div>
+<div class="paragraph"><p>Write a python script which writes the message indicated in the example
+below when it encounters the first adjacent duplicate pair of lines.</p></div>
+<div class="paragraph"><p>This is like the card game snap.</p></div>
+<div class="paragraph"><p>You should assume that such a duplicate pair exists.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>3
+45
+2
+3
+51
+2
+2</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>snap: 2</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_discussion">Discussion</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Again, here, <em>we do not know how many times our loop must iterate</em>.</p></div>
+<div class="paragraph"><p>It could be that the very first two numbers read are the same, and we&#8217;re
+done immediately; or, it could be a that we read and read and read before
+encountering a duplicate pair.  It depends upon the input.</p></div>
+<div class="paragraph"><p>Therefore, again we cannot use the <em>do-something-$n$-times</em> loop pattern.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_search_loops">Search loops</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Consider the two example tasks above, <em>sum</em> and <em>snap</em>.</p></div>
+<div class="paragraph"><p>One way to view these tasks is that we are <em>searching for something</em>:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+in the first case we are <em>searching for a line containing only $0$</em>, and
+</p>
+</li>
+<li>
+<p>
+in the second case we are <em>searching for a duplicate pair</em>.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>And in both cases, our loop will:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+stop iterating when we find what we&#8217;re looking for, but
+</p>
+</li>
+<li>
+<p>
+but <em>keep going</em> while we still <em>haven&#8217;t</em> found what we&#8217;re looking for.
+</p>
+</li>
+</ul></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note the last point:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+we <strong>keep iterating</strong> while we <strong>haven&#8217;t</strong> found what we&#8217;re searching for.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This observation suggests an approach to writing these types of python
+scripts which works for many search-type problems.</p></div>
+</div></div>
+<div class="sect2">
+<h3 id="_sum_2">Sum</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Our goal is to add up a sequence of numbers, stopping and the sum to
+standard output when we encounter a $0$.</p></div>
+<div class="paragraph"><p>Let&#8217;s start with a simpler tasks, let&#8217;s <em>just copy the numbers to standard
+output</em>, and stop when we encounter a $0$.</p></div>
+<div class="paragraph"><p>If we can do that, then we can work on adding the numbers up afterwards.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>So:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+we <strong>stop</strong> when the current value <strong>is zero</strong>.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Therefore:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+we <strong>keep going</strong> while the current value is <strong>not zero</strong>.
+</p>
+</li>
+</ul></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>We have to track <em>the current value</em>.</p></div>
+<div class="paragraph"><p>The current value is an integer of no particular significance, so we&#8217;ll use the variable $n$.</p></div>
+<div class="paragraph"><p>Our loop will be structured like this:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Initialisation.</span></span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span></tt></pre></div></div>
+<div class="paragraph"><p>There&#8217;s a lot still missing, but at least we have the key Boolean expression in our loop.</p></div>
+<div class="paragraph"><p>We <strong>keep going</strong> while <strong>$n$ isn&#8217;t zero</strong>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The first time we encounter the condition, $n$ must be the first value read from standard input.</p></div>
+<div class="paragraph"><p>Therefore, we must read that value before encountering the loop.</p></div>
+<div class="paragraph"><p>So:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>             <span style="font-style: italic"><span style="color: #9A1900"># Read the *first* value before encountering the loop.</span></span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>And every subsequent time we encounter the condition, $n$ must be the
+<em>next</em> value read from standard input.</p></div>
+<div class="paragraph"><p>Therefore, we must read that value at the end of the loop body, so that we
+have that new value before returning to the top of the loop.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>          <span style="font-style: italic"><span style="color: #9A1900"># Read the *next* value before looping back to the top.</span></span></tt></pre></div></div>
+<div class="paragraph"><p>This is our basic loop structure for this task.</p></div>
+<div class="paragraph"><p>It reads a sequence of integers from standard input, stopping when it encounters a $0$.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>We could just print out each number as we encounter it, just to see that our loop works:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>n<span style="color: #990000">)</span>                  <span style="font-style: italic"><span style="color: #9A1900"># Print n, just to see that our loop works.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The goal of the program is to calculate and output the sum of a sequence is values.</p></div>
+<div class="paragraph"><p>Therefore, we need to keep track of the sum (or <code>total</code>) as we go along.</p></div>
+<div class="paragraph"><p>Our approach is:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+start off by taking the <code>total</code> to be $0$,
+</p>
+</li>
+<li>
+<p>
+for each new value $n$ encountered, add that value to the <code>total</code>,
+</p>
+</li>
+<li>
+<p>
+and when we&#8217;re done, print out the <code>total</code>.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>This is the approach we would take if we were to solve this problem in our
+heads.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Here is our solution:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+total <span style="color: #990000">=</span> <span style="color: #993399">0</span>                    <span style="font-style: italic"><span style="color: #9A1900"># 1, above; start of with 0.</span></span>
+
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   total <span style="color: #990000">=</span> total <span style="color: #990000">+</span> n         <span style="font-style: italic"><span style="color: #9A1900"># 2, above; add the current value to the total.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+
+<span style="color: #0000FF">print</span> total                  <span style="font-style: italic"><span style="color: #9A1900"># 3, above; print out the total.</span></span></tt></pre></div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_search_loops_2">Search loops</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Consider that example again; in particular, consider just the loop:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   total <span style="color: #990000">=</span> total <span style="color: #990000">+</span> n
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The assignment to the variable <code>total</code> is specific to this particular task.</p></div>
+<div class="paragraph"><p>More generally, this depends upon the task at hand.</p></div>
+<div class="paragraph"><p>So we can think of the loop like this:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.           # This depends upon the task at hand.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In the general case, the structure of our loop is:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.           # 1, below.</span></span>
+<span style="color: #0000FF">while</span> <span style="color: #0000FF">not</span> STOP_CONDITION<span style="color: #990000">:</span>                       <span style="font-style: italic"><span style="color: #9A1900"># 2, below.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.                              # 3, below.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.  # 4, below.</span></span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+We begin by preparing to evaluate the loop condition for the first time.<br />
+  In the example, the test depends upon the <em>current value</em> $n$, so we need to read
+  that value from standard input.
+</p>
+</li>
+<li>
+<p>
+We know the <code>STOP_CONDITION</code>; this is the state we&#8217;re <em>searching for</em>.<br />
+  Therefore, the loop should <em>keep going</em> as long as we haven&#8217;t found that state;
+  so, as long as the stop condition is <code>False</code>.<br />
+  In the example, we stop when $n$ is $0$, so we keep going while <em>$n$ is not $0$</em>.
+</p>
+</li>
+<li>
+<p>
+Within the body of the loop, we do whatever is required by the task at hand<br />
+  In the example, that is to add the current value $n$ to the <code>total</code>.
+</p>
+</li>
+<li>
+<p>
+Finally, before looping back to the top and repeating the test, we must prepare for that test.
+  In the example, that means that we must read the next value $n$ from standard input.
+</p>
+</li>
+</ol></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Many search-type problems involve loops with this structure.</p></div>
+<div class="paragraph"><p>We will call this loop pattern a <em>search loop</em>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Compare, this loop pattern:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> <span style="color: #0000FF">not</span> STOP_CONDITION<span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+<div class="paragraph"><p>And observe how this general pattern translates to the specific case of our example task:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>              <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>                 <span style="font-style: italic"><span style="color: #9A1900"># Stop condition is "n == 0", so keep going while "n != 0".</span></span>
+   total <span style="color: #990000">=</span> total <span style="color: #990000">+</span> n          <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>           <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>All of the loops we write in the labs match one of three patterns:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+the <em>do-something-<code>n</code>-times</em> pattern we covered previously,
+</p>
+</li>
+<li>
+<p>
+the <em>search loop</em> pattern above,
+</p>
+</li>
+<li>
+<p>
+or a third pattern (which we have not yet covered).
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Once you decide which type of loop is required, you can write in the loop
+pattern before filling in the details required for the task at hand.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_snap_2">Snap</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Recall that, for this task, our goal is to find the first adjacent pair of
+equal numbers, like the card game snap.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>For this task we:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+observe that we need a loop,
+</p>
+</li>
+<li>
+<p>
+but we do not know how many times that loop must iterate (that depends upon the input).
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Therefore we need to use the <em>search loop</em> pattern:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+we&#8217;re searching for an adjacent pair of equal numbers.
+</p>
+</li>
+</ul></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>So we start like this:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> <span style="color: #0000FF">not</span> STOP_CONDITION<span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The <em>stop condition</em> is that the current value equals the previous value; so
+we will track those two values in variables called <code>prev</code> and <code>curr</code> (short for "previous" and "current").</p></div>
+<div class="paragraph"><p>We stop when those values are the same; therefore we keep going while they are different:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> curr <span style="color: #990000">!=</span> prev<span style="color: #990000">:</span>                    <span style="font-style: italic"><span style="color: #9A1900"># &lt;-- Here.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>To <em>prepare to test the loop condition</em> we need to have the first values for <code>prev</code> and <code>curr</code>.</p></div>
+<div class="paragraph"><p>Therefore, we need to read the first two values:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+prev <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>                         <span style="font-style: italic"><span style="color: #9A1900"># &lt;-- Here.</span></span>
+curr <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>                         <span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="color: #0000FF">while</span> curr <span style="color: #990000">!=</span> prev<span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>And to
+<em>prepare to test the loop condition again</em>
+we need to move on to the next pair of <code>prev</code> and <code>curr</code> values.</p></div>
+<div class="paragraph"><p>So we need to remember the current value (it is the new previous value), and read the new current value:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+prev <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+curr <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+<span style="color: #0000FF">while</span> curr <span style="color: #990000">!=</span> prev<span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   prev <span style="color: #990000">=</span> curr                         <span style="font-style: italic"><span style="color: #9A1900"># &lt;-- Here.</span></span>
+   curr <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>                      <span style="font-style: italic"><span style="color: #9A1900">#</span></span></tt></pre></div></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>As it happens, there&#8217;s nothing left to do within the body of the loop in
+this case.</p></div>
+<div class="paragraph"><p>So the final script looks like this:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+prev <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+curr <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+<span style="color: #0000FF">while</span> curr <span style="color: #990000">!=</span> prev<span style="color: #990000">:</span>
+   prev <span style="color: #990000">=</span> curr
+   curr <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+
+<span style="color: #0000FF">print</span> curr</tt></pre></div></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_more_examples">More examples</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_copy_to_standard_output">Copy to standard output</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of lines of text, terminated by
+a line containing only the text "end".</p></div>
+<div class="paragraph"><p>Write a python script to copy those lines to standard output.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>Nobody expects
+the Spanish inquisition!
+end</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>Nobody expects
+the Spanish inquisition!</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Discussion</div>
+<div class="paragraph"><p>Here, we&#8217;re reading lines of text, not integers, so we just use <code>input()</code>
+to read the lines.</p></div>
+<div class="paragraph"><p>Assume we use a string variable $s$ for each line.</p></div>
+<div class="paragraph"><p>We <em>stop</em> when $s$ is "end"; therefore <em>we keep</em> going while $s$ is not "end".</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Solution</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+s <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>                  <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> s <span style="color: #990000">!=</span> <span style="color: #FF0000">"end"</span><span style="color: #990000">:</span>            <span style="font-style: italic"><span style="color: #9A1900"># This is the opposite of the stop condition.</span></span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>s<span style="color: #990000">)</span>                  <span style="font-style: italic"><span style="color: #9A1900"># Do something.</span></span>
+   s <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>               <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_first_odd_number">First odd number</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of integers, one per line.</p></div>
+<div class="paragraph"><p>Write a python script which writes <em>the first odd number encountered</em> to standard output.</p></div>
+<div class="paragraph"><p>You should assume that the input does indeed contain at least one odd number.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>2
+0
+14
+5
+28</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>5</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Discussion</div>
+<div class="paragraph"><p>We are searching for the first odd number.</p></div>
+<div class="paragraph"><p>Therefore, we <em>keep going</em> while the current number is not odd (so, it&#8217;s even).</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Solution</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>             <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition.</span></span>
+<span style="color: #0000FF">while</span> n <span style="color: #990000">%</span> <span style="color: #993399">2</span> <span style="color: #990000">==</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>            <span style="font-style: italic"><span style="color: #9A1900"># This is the opposite of the stop condition.</span></span>
+   n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span>          <span style="font-style: italic"><span style="color: #9A1900"># Prepare to test the loop condition again.</span></span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>n<span style="color: #990000">)</span></tt></pre></div></div>
+<script src="/einstein/common.js"></script>
+<script src="/einstein/instrument.js"></script>
+<script type="text/javascript" src="https://einstein.computing.dcu.ie/npm/mathjax/MathJax.js?config=AM_CHTML">
+</script>
+
+<script> type="text/javascript"
+   MathJax.Hub.Config({
+     asciimath2jax: { delimiters: [['$','$']] }
+   });
+</script>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2021-12-09 14:30:59 IST
+</div>
+</div>
+</body>
+</html>

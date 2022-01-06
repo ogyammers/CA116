@@ -1,0 +1,1567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 9.0.0rc2" />
+<title>Dictionaries</title>
+<style type="text/css">
+.question {
+   font-weight: bold;
+   font-size: x-large;
+   width: 100%;
+   display: block;
+   color: #527bbd;
+}
+
+.questionpart {
+   font-weight: bold;
+   font-size: large;
+   color: #527bbd;
+}
+
+.mark, .markpart {
+   float: right;
+   margin-left:20px;
+   color: #527bbd;
+}
+
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+}
+
+em {
+  font-style: italic;
+  /* color: navy; */
+}
+
+strong {
+  font-weight: bold;
+  /* color: #083194; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  /* border: 1px solid silver; */
+  border-top: 2px solid #cccccc;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+/*
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+*/
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  /* color: navy; */
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+p > code {
+  background: #e9e9e9;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+}
+
+div.admonitionblock p > code {
+  background: #f2f2f2;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  color: #404040;
+}
+div.literalblock > div.content {
+  border-left: 3px solid #cccccc;
+  /*
+  border-radius: 4px;
+  background: #f9f9f9;
+  */
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content, div.listingblock > div.content {
+  border: 1px solid #cccccc;
+  border-left: 3px solid #cccccc;
+  border-radius: 4px;
+}
+
+div.sidebarblock > div.content {
+  background: #f2f2f2;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  background: #f9f9f9;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content pre, div.literalblock > div.content pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 2px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #527bbd;
+  padding-right: 0.5em;
+  width: 3em;
+  min-width: 3em;
+  max-width: 3em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #cccccc;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #cccccc;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  /*
+  color: navy;
+  */
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  /*
+  color: navy;
+  */
+}
+dt.hdlist1 {
+  font-style: italic;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+var head, link;
+
+link = document.createElement("link");
+
+link.rel = "stylesheet";
+
+link.href = "https://einstein.computing.dcu.ie/fonts/fonts.css";
+
+head = document.getElementsByTagName("head")[0];
+
+head.appendChild(link);
+
+console.log("asciidoc: morteratsch theme");
+
+console.log("asciidoc: einstein fonts...\n  " + link.href);
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Dictionaries</h1>
+<span id="author">Stephen Blott</span><br />
+<span id="email"><code>&lt;<a href="mailto:stephen.blott@dcu.ie">stephen.blott@dcu.ie</a>&gt;</code></span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_the_code_in_code_operator">1. The <code>in</code> operator</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_linear_search">1.1. Linear search</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>It is common to test whether an element is present (or not) in a collection
+of elements, for example in a list.</p></div>
+<div class="paragraph"><p>One approach is to use linear search.  For example, given a list <code>a</code> and a
+value <code>v</code>, we can test whether <code>v</code> is present in <code>a</code> as follows.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>a<span style="color: #990000">)</span> <span style="color: #0000FF">and</span> a<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">!=</span> v<span style="color: #990000">:</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span>
+
+<span style="color: #0000FF">if</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>a<span style="color: #990000">):</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># v is present in a</span></span>
+<span style="color: #0000FF">else</span><span style="color: #990000">:</span>
+   <span style="font-style: italic"><span style="color: #9A1900"># v is not present in a</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>If you are lucky and <code>v</code> happens always to be the first element in <code>a</code>, then the cost is $O(1)$.</p></div>
+<div class="paragraph"><p>However, if <code>v</code> turns out not to be present in the list at all, then the
+entire list must be searched before we learn that.
+So the cost is $O(n)$ (where $n$ is the length of the lists).</p></div>
+<div class="paragraph"><p>In the general case, where perhaps half of the list must be search, linear search is
+still $O(n)$ (the cost is still proportional to the length of the list).</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_example_de_duplicate">1.2. Example (de-duplicate)</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of words, one per line.</p></div>
+<div class="paragraph"><p>Write a python script which copies standard input to standard output,
+but omitting words which have been seen previously.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Approach</div>
+<div class="paragraph"><p>Remember the words that we have seen previously in a list called <code>seen</code>.</p></div>
+<div class="paragraph"><p>For each new word, search for it in <code>seen</code>:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+if we find it there, then we have seen the word before, so we skip it;
+</p>
+</li>
+<li>
+<p>
+otherwise, we haven&#8217;t seen the word before, so we add it to <code>seen</code> and
+  write it to standard output.
+</p>
+</li>
+</ul></div>
+</div></div>
+<div class="listingblock">
+<div class="title">De-duplicate:</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+words <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+seen <span style="color: #990000">=</span> <span style="color: #990000">[]</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>words<span style="color: #990000">):</span>
+   j <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+   <span style="color: #0000FF">while</span> j <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>seen<span style="color: #990000">)</span> <span style="color: #0000FF">and</span> seen<span style="color: #990000">[</span>j<span style="color: #990000">]</span> <span style="color: #990000">!=</span> words<span style="color: #990000">[</span>i<span style="color: #990000">]:</span>
+      j <span style="color: #990000">=</span> j <span style="color: #990000">+</span> <span style="color: #993399">1</span>
+
+   <span style="color: #0000FF">if</span> j <span style="color: #990000">==</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>seen<span style="color: #990000">):</span>
+      seen<span style="color: #990000">.</span><span style="color: #000000">append</span><span style="color: #990000">(</span>words<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+      sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>words<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In the best case (all of the words are the same), the overall cost here is $O(n)$,
+where $n$ is the number of words).</p></div>
+<div class="paragraph"><p>However, for the general case, we have an $O(n)$ inner loop (linear search) within an $O(n)$ outer loop to consider each word in turn, so the overall cost is $O(n^2)$.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_the_code_in_code_operator_2">1.3. The <code>in</code> operator</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Python provides a built-in operator for testing the presence of a
+value in a list, the <code>in</code> operator.</p></div>
+<div class="paragraph"><p>The example above can be re-written as follows.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+words <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+seen <span style="color: #990000">=</span> <span style="color: #990000">[]</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>words<span style="color: #990000">):</span>
+   <span style="color: #0000FF">if</span> words<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">not</span> <span style="color: #0000FF">in</span> seen<span style="color: #990000">:</span>       <span style="font-style: italic"><span style="color: #9A1900"># &lt;-- We use the python "in" operator.</span></span>
+      seen<span style="color: #990000">.</span><span style="color: #000000">append</span><span style="color: #990000">(</span>words<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+      sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>words<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>That&#8217;s considerably more concise, and clearer too.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Explanation</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># Assume some list a and some value v.</span></span>
+
+v <span style="color: #0000FF">in</span> a
+<span style="font-style: italic"><span style="color: #9A1900"># This is a Boolean expression.  It is True whenever v is an element of the</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># list a (and False otherwise).</span></span>
+
+<span style="color: #0000FF">not</span> <span style="color: #990000">(</span>v <span style="color: #0000FF">in</span> a<span style="color: #990000">)</span>
+<span style="font-style: italic"><span style="color: #9A1900"># This is also a Boolean expression.  It is False whenever v is an element of the</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># list a (and True otherwise).</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># However, in python, we almost never write this this way.  To test whether an</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># element is *not* in a list, we use the following not-in operator...</span></span>
+
+v <span style="color: #0000FF">not</span> <span style="color: #0000FF">in</span> a
+<span style="font-style: italic"><span style="color: #9A1900"># This is also a Boolean expression.  It is False whenever v is an element of the</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"># list a (and True otherwise).</span></span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_cost">1.4. Cost?</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Linear search is $O(n)$;
+therefore, the complexity of the original solution above is $O(n^2)$.</p></div>
+<div class="paragraph"><p>Using the <code>in</code> operator does not change this.</p></div>
+<div class="paragraph"><p>Our original linear-search loop is still there, it&#8217;s just hidden behind some concise python syntax.</p></div>
+<div class="paragraph"><p>Testing for the presence of an element in a list is fundamentally
+$O(n)$:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+so the cost of using the <code>in</code> operator is still $O(n)$, and
+</p>
+</li>
+<li>
+<p>
+the overall cost remains $O(n^2)$.
+</p>
+</li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_lists_again">1.5. Lists again</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Let&#8217;s think about lists again.</p></div>
+<div class="paragraph"><p>We can think of a list is as a mapping from keys to values, where the keys are always
+non-negative integers (beginning from $0$).</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>a <span style="color: #990000">=</span> <span style="color: #990000">[</span><span style="color: #FF0000">"dog"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"cat"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"mouse"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"horse"</span><span style="color: #990000">]</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># you can think of a is a mapping from integers to strings:</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#   0 -&gt; "dog"</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#   1 -&gt; "cat"</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#   2 -&gt; "mouse"</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">#   3 -&gt; "horse"</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Given a list <code>a</code>, we know its length: <code>len(a)</code>.</p></div>
+<div class="paragraph"><p>And given the length of a list <code>a</code>, we know all of its keys, <code>0</code>, <code>1</code>, <code>2</code>, &#8230;, <code>len(a)-1</code>.</p></div>
+<div class="paragraph"><p>Looking up the value associated with a particular integer key <code>i</code> is fast, it is
+$O(1)$.  This cost does not depend upon the length of the list.</p></div>
+<div class="paragraph"><p>This is because of the way that lists are implemented by the python interpreter.
+It uses simple arithmetic to directly calculate the position of the $i$-th element of <code>a</code> in memory.</p></div>
+<div class="paragraph"><p>However, testing for the presence
+of a value in a list is slow; we may have to examine every element
+in the list, which is $O(n)$.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dictionaries">2. Dictionaries</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>A list is as a mapping from non-negative integers to values.</p></div>
+<div class="paragraph"><p>A dictionary is a mapping from <em>key values of any (immutable) type</em> to other
+values.</p></div>
+<div class="paragraph"><p>For our purposes, the keys will most frequently be strings,
+and the dictionary will be a mapping of strings to values.  However, in
+general, the keys can be of any immutable type.</p></div>
+<div class="paragraph"><p>Here is an example.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>people <span style="color: #990000">=</span> <span style="color: #990000">{</span>
+   <span style="color: #FF0000">"Elvis Presley"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"08/01/35"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Lisa Presley"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"01/02/68"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Robert Zimmerman"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"24/05/41"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Adele Adkins"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"05/05/88"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Sia Furler"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"18/12/75"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Justin Bieber"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"01/03/94"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Paul Hewson"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"10/05/60"</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>people<span style="color: #990000">[</span><span style="color: #FF0000">"Robert Zimmerman"</span><span style="color: #990000">])</span>    <span style="font-style: italic"><span style="color: #9A1900"># "24/05/41"</span></span>
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>people<span style="color: #990000">[</span><span style="color: #FF0000">"Adele Adkins"</span><span style="color: #990000">])</span>        <span style="font-style: italic"><span style="color: #9A1900"># "05/05/88"</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>For list literals, we use <code>[</code> and <code>]</code>.</p></div>
+<div class="paragraph"><p>For dictionary literals, we use braces, <code>{</code> and <code>}</code>.</p></div>
+<div class="paragraph"><p>Each entry is a pair, a <em>key</em> and a <em>value</em>.  In the example above, the
+keys are peoples' names, and the values are their dates of birth.  The keys
+and the values are both strings.</p></div>
+<div class="paragraph"><p>We can assign values to keys in a dictionary dynamically too.  For example,
+the following is equivalent to the example above.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>people <span style="color: #990000">=</span> <span style="color: #990000">{}</span>                         <span style="font-style: italic"><span style="color: #9A1900"># A new, empty dictionary.</span></span>
+
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Elvis Presley"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"08/01/35"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Lisa Presley"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"01/02/68"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Robert Zimmerman"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"24/05/41"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Adele Adkins"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"05/05/88"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Sia Furler"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"18/12/75"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Justin Bieber"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"01/03/94"</span>
+people<span style="color: #990000">[</span><span style="color: #FF0000">"Paul Hewson"</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"10/05/60"</span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>people<span style="color: #990000">[</span><span style="color: #FF0000">"Robert Zimmerman"</span><span style="color: #990000">])</span>    <span style="font-style: italic"><span style="color: #9A1900"># "24/05/41"</span></span>
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>people<span style="color: #990000">[</span><span style="color: #FF0000">"Adele Adkins"</span><span style="color: #990000">])</span>        <span style="font-style: italic"><span style="color: #9A1900"># "05/05/88"</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>For assignment (and looking up values), we use square brackets, just like
+with lists.  Braces are used only for dictionary literals.</p></div>
+</div></div>
+<div class="sect2">
+<h3 id="_the_code_in_code_operator_3">2.1. The <code>in</code> operator</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>We can also use the <code>in</code> operator with dictionaries.
+In this case, the <code>in</code> operator tests whether a key is defined in a
+dictionary (or not).</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #FF0000">"Justin Bieber"</span> <span style="color: #0000FF">in</span> people<span style="color: #990000">)</span>     <span style="font-style: italic"><span style="color: #9A1900"># True</span></span>
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #FF0000">"John Lennon"</span> <span style="color: #0000FF">in</span> people<span style="color: #990000">)</span>       <span style="font-style: italic"><span style="color: #9A1900"># False</span></span>
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #FF0000">"John Lennon"</span> <span style="color: #0000FF">not</span> <span style="color: #0000FF">in</span> people<span style="color: #990000">)</span>   <span style="font-style: italic"><span style="color: #9A1900"># True</span></span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_cost_2">2.2. Cost?</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The key point about dictionaries is that:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>looking up a key</em> in a dictionary, and
+</p>
+</li>
+<li>
+<p>
+<em>testing for the presence of a key</em> in a dictionary
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>are both $O(1)$.</p></div>
+<div class="paragraph"><p>These operations are fast: the cost does not depend upon the number of entries in the dictionary.</p></div>
+<div class="paragraph"><p>This is fundamentally different to lists.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_example_revisited">2.3. Example revisited</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>With dictionaries, we can rewrite our de-duplication example.</p></div>
+<div class="paragraph"><p>Previously, we used a list called <code>seen</code> to store the words which we had
+seen previously.  Looking up each new word in the list was $O(n)$ (so,
+slow), and overall our solution was $O(n^2)$, making it impractical for all
+but the smallest of problem sizes.</p></div>
+<div class="paragraph"><p>Instead of using a list to store the lines which we have seen previously, we
+now use a dictionary.  The keys within the dictionary are the words which we have seen
+previously, and the values are Booleans.</p></div>
+<div class="paragraph"><p>(The values are all <code>True</code>, as it
+happens because in this example, it is merely the presence of the mapping
+which is significant.)</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+words <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+seen <span style="color: #990000">=</span> <span style="color: #990000">{}</span>                           <span style="font-style: italic"><span style="color: #9A1900"># This is now a dictionary.</span></span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>words<span style="color: #990000">):</span>
+   <span style="color: #0000FF">if</span> words<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #0000FF">not</span> <span style="color: #0000FF">in</span> seen<span style="color: #990000">:</span>         <span style="font-style: italic"><span style="color: #9A1900"># This test is now fast (O(1)).</span></span>
+      seen<span style="color: #990000">[</span>words<span style="color: #990000">[</span>i<span style="color: #990000">]]</span> <span style="color: #990000">=</span> True         <span style="font-style: italic"><span style="color: #9A1900"># Note that we have seen words[i].</span></span>
+      sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>words<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>dog
+cat
+cat
+mouse
+dog</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># Following execution, the dictionary seen is:</span></span>
+<span style="color: #990000">{</span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> True<span style="color: #990000">,</span>
+   <span style="color: #FF0000">"cat"</span><span style="color: #990000">:</span> True<span style="color: #990000">,</span>
+   <span style="color: #FF0000">"mouse"</span><span style="color: #990000">:</span> True
+<span style="color: #990000">}</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Previously, the overall cost of our solution was $O(n^2)$.</p></div>
+<div class="paragraph"><p>Using a dictionary instead of a list, the test for whether we have
+seen a word previously is now $O(1)$, so the overall cost
+is just $O(n)$.</p></div>
+<div class="paragraph"><p>This solution, therefore, is also suitable for large data sets.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_iteration">2.4. Iteration</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Given an arbitrary list $a$ of length $n$, we know all of the "keys" of
+$a$, they are the integer values form $0$ to $n-1$.</p></div>
+<div class="paragraph"><p>This allows us to examine every element in a list using a simple loop, as
+follows.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>a<span style="color: #990000">):</span>
+   sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>a<span style="color: #990000">[</span>i<span style="color: #990000">])</span>       <span style="font-style: italic"><span style="color: #9A1900"># We know that i is a valid "key" for a.</span></span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Given an arbitrary dictionary $d$, we usually <em>do not</em> know the keys of $d$,
+so we cannot just iterate over them as we do with lists.</p></div>
+<div class="paragraph"><p>For iterating over the keys of a dictionary, we need to use a different
+kind of loop, a <code>for</code> loop.</p></div>
+<div class="paragraph"><p>Here is an example.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>people <span style="color: #990000">=</span> <span style="color: #990000">{</span>
+   <span style="color: #FF0000">"Elvis Presley"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"08/01/35"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Lisa Presley"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"01/02/68"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Robert Zimmerman"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"24/05/41"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Adele Adkins"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"05/05/88"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Sia Furler"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"18/12/75"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Justin Bieber"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"01/03/94"</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"Paul Hewson"</span><span style="color: #990000">:</span> <span style="color: #FF0000">"10/05/60"</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #0000FF">for</span> person <span style="color: #0000FF">in</span> people<span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span> person</tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Output</div>
+<div class="content">
+<pre><code>Lisa Presley
+Robert Zimmerman
+Paul Hewson
+Sia Furler
+Justin Bieber
+Adele Adkins
+Elvis Presley</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In the <code>for</code> loop above, <code>person</code> is an arbitrary variable name.  The
+programmer (you) can choose any suitable variable name.
+This is known as the <em>loop variable</em>.</p></div>
+<div class="paragraph"><p><code>person</code> is a suitable choice for the loop variable here because we happen know that the dictionary contains people.</p></div>
+<div class="paragraph"><p>In the general case, where we do not know the contents of the dictionary, we
+would often use the name <code>key</code> (or even just <code>k</code>) for the loop variable. All we know is that it&#8217;s a key.</p></div>
+<div class="paragraph"><p>Python arranges that the body of the <code>for</code> loop is executed once for each entry
+in the dictionary in turn, with the loop variable set to that entry&#8217;s key.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_ordering">2.5. Ordering</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Consider the output in the example above.  Here it is again.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>Lisa Presley
+Robert Zimmerman
+Paul Hewson
+Sia Furler
+Justin Bieber
+Adele Adkins
+Elvis Presley</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In particular, observe <em>the order</em> in which the output is appears.</p></div>
+<div class="paragraph"><p>When we created the dictionary, the order was <code>Elvis</code>, <code>Lisa</code>, <code>Robert</code>, &#8230;</p></div>
+<div class="paragraph"><p>In the output above, the order is <code>Lisa</code>, <code>Robert</code>, <code>Paul</code>, &#8230;</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>With dictionaries:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+looking up a key is fast (it is constant time),
+</p>
+</li>
+<li>
+<p>
+however we lose the original order of the entries.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This trade off is fundamental; it relates to how dictionaries are
+implemented by the python interpreter.</p></div>
+<div class="paragraph"><p>With lists, the keys <em>must be integers</em>, and we retain the original
+ordering on the entries.  With dictionaries, the keys <em>can be any
+(immutable) type</em>, but we lose the original order.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">3. Examples</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_word_counts">3.1. Word counts</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of words, one per line.</p></div>
+<div class="paragraph"><p>Write a python script which writes, for each word encountered, that
+word and a count of the number of times which it occurred to standard
+output.</p></div>
+<div class="paragraph"><p>The order of the output does not matter.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>dog
+cat
+mouse
+mouse
+dog
+mouse
+dog
+cat
+dog</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>dog 4
+cat 2
+mouse 3</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Approach</div>
+<div class="paragraph"><p>We need to consider each word from standard input in turn.  For that, we
+can use the same type of loop that we have used throughout, a <code>while</code> loop.</p></div>
+<div class="paragraph"><p>And we need to maintain a count of the number of times which we have seen
+each word.  For that, we use a dictionary (<code>counts</code>, below).  The keys are
+the words (so, strings), and the values are the counts (so, integers).</p></div>
+<div class="paragraph"><p>Each value tracks,
+as we proceed, the number of times that we have encountered the corresponding word
+so far.</p></div>
+<div class="paragraph"><p>Within the loop, we increase the count for the current word.</p></div>
+<div class="paragraph"><p>When we&#8217;re done, we iterate over the keys of the dictionary to produce the required output.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>With the example data, above (<code>dog</code>, <code>cat</code>, <code>mouse</code>, <code>mouse</code>, <code>dog</code>, &#8230;) the dictionary <code>counts</code> is build line by line as follows:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">{</span> <span style="font-style: italic"><span style="color: #9A1900"># After "dog":</span></span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #990000">{</span> <span style="font-style: italic"><span style="color: #9A1900"># After "dog", "cat":</span></span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"cat"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #990000">{</span> <span style="font-style: italic"><span style="color: #9A1900"># After "dog", "cat", "mouse":</span></span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"cat"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"mouse"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #990000">{</span> <span style="font-style: italic"><span style="color: #9A1900"># After "dog", "cat", "mouse", "mouse":</span></span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"cat"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"mouse"</span><span style="color: #990000">:</span> <span style="color: #993399">2</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span>
+
+<span style="color: #990000">{</span> <span style="font-style: italic"><span style="color: #9A1900"># After "dog", "cat", "mouse", "mouse", "dog":</span></span>
+   <span style="color: #FF0000">"dog"</span><span style="color: #990000">:</span> <span style="color: #993399">2</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"cat"</span><span style="color: #990000">:</span> <span style="color: #993399">1</span><span style="color: #990000">,</span>
+   <span style="color: #FF0000">"mouse"</span><span style="color: #990000">:</span> <span style="color: #993399">2</span><span style="color: #990000">,</span>
+<span style="color: #990000">}</span></tt></pre></div></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example solution</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+words <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+counts <span style="color: #990000">=</span> <span style="color: #990000">{}</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>words<span style="color: #990000">):</span>
+   word <span style="color: #990000">=</span> words<span style="color: #990000">[</span>i<span style="color: #990000">].</span><span style="color: #000000">rstrip</span><span style="color: #990000">()</span>         <span style="font-style: italic"><span style="color: #9A1900"># Strip trailing newline character.</span></span>
+   <span style="color: #0000FF">if</span> word <span style="color: #0000FF">not</span> <span style="color: #0000FF">in</span> counts<span style="color: #990000">:</span>           <span style="font-style: italic"><span style="color: #9A1900"># Is this a new word?</span></span>
+      counts<span style="color: #990000">[</span>word<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+   counts<span style="color: #990000">[</span>word<span style="color: #990000">]</span> <span style="color: #990000">=</span> counts<span style="color: #990000">[</span>word<span style="color: #990000">]</span> <span style="color: #990000">+</span> <span style="color: #993399">1</span>  <span style="font-style: italic"><span style="color: #9A1900"># Increment the count for the current word.</span></span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span>
+
+<span style="color: #0000FF">for</span> word <span style="color: #0000FF">in</span> counts<span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>word<span style="color: #990000">,</span> counts<span style="color: #990000">[</span>word<span style="color: #990000">])</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Explanation</div>
+<div class="paragraph"><p>We begin with an empty dictionary (<code>counts</code>).</p></div>
+<div class="paragraph"><p>The structure of the outer loop is exactly as we have seen before.</p></div>
+<div class="paragraph"><p>Within the body of the first loop, we first check whether we have seen
+this word before.  If we have not, then we add a new entry to the
+dictionary.  Then we increment the count for the current word.</p></div>
+<div class="paragraph"><p>When we&#8217;re done, we iterate over the words (the
+second loop), printing each out in turn.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_translation">3.2. Translation</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Standard input consists of a sequence of lines of text.</p></div>
+<div class="paragraph"><p>Each line contains either one or two words:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+if a line contains two words&#8201;&#8212;&#8201;for example, "<code>six sechs</code>"&#8201;&#8212;&#8201;then it is a translation, with the first
+  word being an English word, and the second word being the same word in
+  a different language; and
+</p>
+</li>
+<li>
+<p>
+if a line contains a single word&#8201;&#8212;&#8201;for example, just "<code>six</code>"&#8201;&#8212;&#8201;then it is
+  a word to be translated.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Write a python script which translates each such single word, writing the
+translation to standard output, one word per line.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard input</div>
+<div class="content">
+<pre><code>dog Hund
+cat Katze
+dog
+horse Pferd
+horse
+snake Schlange
+cat
+snake
+horse</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>Hund
+Pferd
+Katze
+Schlange
+Pferd</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Approach</div>
+<div class="paragraph"><p>Consider each line in turn, and maintain the translation as a dictionary.</p></div>
+<div class="paragraph"><p>For each new line:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+if it contains two words, then add a new entry to the dictionary, and
+</p>
+</li>
+<li>
+<p>
+if it contains just one word, then look that word up in the dictionary
+  and write the translated word to standard output.
+</p>
+</li>
+</ul></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Solution</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+translation <span style="color: #990000">=</span> <span style="color: #990000">{}</span>
+
+s <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readline</span><span style="color: #990000">()</span>
+<span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>s<span style="color: #990000">):</span>
+   tokens <span style="color: #990000">=</span> s<span style="color: #990000">.</span><span style="color: #000000">split</span><span style="color: #990000">()</span>
+   <span style="color: #0000FF">if</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>tokens<span style="color: #990000">)</span> <span style="color: #990000">==</span> <span style="color: #993399">2</span><span style="color: #990000">:</span>
+      translation<span style="color: #990000">[</span>tokens<span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">]]</span> <span style="color: #990000">=</span> tokens<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>
+   <span style="color: #0000FF">else</span><span style="color: #990000">:</span>
+      <span style="color: #0000FF">print</span><span style="color: #990000">(</span>translation<span style="color: #990000">[</span>tokens<span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">]])</span>
+      s <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">readline</span><span style="color: #990000">()</span></tt></pre></div></div>
+<script src="/einstein/common.js"></script>
+<script src="/einstein/instrument.js"></script>
+<script type="text/javascript" src="https://einstein.computing.dcu.ie/npm/mathjax/MathJax.js?config=AM_CHTML">
+</script>
+
+<script> type="text/javascript"
+   MathJax.Hub.Config({
+     asciimath2jax: { delimiters: [['$','$']] }
+   });
+</script>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2021-12-09 14:30:59 IST
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 9.0.0rc2" />
+<title>File Input and Output</title>
+<style type="text/css">
+.question {
+   font-weight: bold;
+   font-size: x-large;
+   width: 100%;
+   display: block;
+   color: #527bbd;
+}
+
+.questionpart {
+   font-weight: bold;
+   font-size: large;
+   color: #527bbd;
+}
+
+.mark, .markpart {
+   float: right;
+   margin-left:20px;
+   color: #527bbd;
+}
+
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+}
+
+em {
+  font-style: italic;
+  /* color: navy; */
+}
+
+strong {
+  font-weight: bold;
+  /* color: #083194; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  /* border: 1px solid silver; */
+  border-top: 2px solid #cccccc;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+/*
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+*/
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  /* color: navy; */
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+p > code {
+  background: #e9e9e9;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+}
+
+div.admonitionblock p > code {
+  background: #f2f2f2;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  color: #404040;
+}
+div.literalblock > div.content {
+  border-left: 3px solid #cccccc;
+  /*
+  border-radius: 4px;
+  background: #f9f9f9;
+  */
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content, div.listingblock > div.content {
+  border: 1px solid #cccccc;
+  border-left: 3px solid #cccccc;
+  border-radius: 4px;
+}
+
+div.sidebarblock > div.content {
+  background: #f2f2f2;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  background: #f9f9f9;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content pre, div.literalblock > div.content pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 2px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #527bbd;
+  padding-right: 0.5em;
+  width: 3em;
+  min-width: 3em;
+  max-width: 3em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #cccccc;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #cccccc;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  /*
+  color: navy;
+  */
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  /*
+  color: navy;
+  */
+}
+dt.hdlist1 {
+  font-style: italic;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+var head, link;
+
+link = document.createElement("link");
+
+link.rel = "stylesheet";
+
+link.href = "https://einstein.computing.dcu.ie/fonts/fonts.css";
+
+head = document.getElementsByTagName("head")[0];
+
+head.appendChild(link);
+
+console.log("asciidoc: morteratsch theme");
+
+console.log("asciidoc: einstein fonts...\n  " + link.href);
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>File Input and Output</h1>
+<span id="author">Stephen Blott</span><br />
+<span id="email"><code>&lt;<a href="mailto:stephen.blott@dcu.ie">stephen.blott@dcu.ie</a>&gt;</code></span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_input_and_output">Input and output</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># command-line arguments...</span></span>
+
+<span style="color: #000080">import</span> sys
+args <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>argv<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">:]</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># standard input...</span></span>
+
+s <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">()</span>
+n <span style="color: #990000">=</span> <span style="color: #000000">int</span><span style="color: #990000">(</span><span style="color: #000000">input</span><span style="color: #990000">())</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900"># standard output...</span></span>
+
+s <span style="color: #990000">=</span> <span style="color: #FF0000">"So long,"</span>
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>s<span style="color: #990000">,</span> <span style="color: #FF0000">"and thanks for all the fish!"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Thus far, we have not considered reading from or writing to files.</p></div>
+</div></div>
+<div class="sect2">
+<h3 id="_background">Background</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">System calls</div>
+<div class="paragraph"><p>A <em>system call</em> is like a function, except it is a special kind of
+function.</p></div>
+<div class="paragraph"><p>It is a function whereby a user program (such as your python script) is
+asking the <strong>operating system</strong> to do something on its behalf.</p></div>
+<div class="paragraph"><p>System calls are one of the main mechanisms whereby user programs
+communicate with the operating system.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Reading</div>
+<div class="paragraph"><p>When a user program reads data from a file, it uses a sequence of three
+system calls:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>open()</code>
+</dt>
+<dd>
+<p>
+  Open a file and return what is called a <em>file descriptor</em>.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>read()</code>
+</dt>
+<dd>
+<p>
+  Read data from a file descriptor.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>close()</code>
+</dt>
+<dd>
+<p>
+  Close a file descriptor.
+</p>
+</dd>
+</dl></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Writing</div>
+<div class="paragraph"><p>Writing to a file is similar:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>open()</code>
+</dt>
+<dd>
+<p>
+  Open a file and return a file descriptor (this time opened for writing).
+</p>
+</dd>
+<dt class="hdlist1">
+<code>write()</code>
+</dt>
+<dd>
+<p>
+  Write data to a file descriptor.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>close()</code>
+</dt>
+<dd>
+<p>
+  Close a file descriptor.
+</p>
+</dd>
+</dl></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>It is the programmer&#8217;s responsibility to keep track for the file
+descriptors which have been allocated.</p></div>
+<div class="paragraph"><p>In particular, if a program opens many files to read or write but
+omits to close them again, then eventually the program will run out of file
+descriptors, and fail.</p></div>
+<div class="paragraph"><p>Here&#8217;s an example&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+a <span style="color: #990000">=</span> <span style="color: #990000">[]</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">100000000</span><span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>i<span style="color: #990000">)</span>
+   a<span style="color: #990000">.</span><span style="color: #000000">append</span><span style="color: #990000">(</span><span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"/etc/passwd"</span><span style="color: #990000">))</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Standard output</div>
+<div class="content">
+<pre><code>.
+.
+.
+1018
+1019
+1020
+1021
+Traceback (most recent call last):
+  File "test.py", line 8, in &lt;module&gt;
+OSError: [Errno 24] Too many open files: '/etc/passwd'
+$</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>With 1021 files already open, the next request to open a file fails.</p></div>
+<div class="paragraph"><p>Programs which perform file input and/or output, must ensure
+that all files which have been opened are closed again.</p></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Why 1021, above?</p></div>
+<div class="paragraph"><p>1021 + 3 is 1024, which is a power of 2.</p></div>
+<div class="paragraph"><p>The three are standard input, standard output and standard error.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shell_example">Shell example</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Consider the following shell fragment&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>echo <span style="color: #FF0000">"hello world"</span> <span style="color: #990000">&gt;</span> message<span style="color: #990000">.</span>txt</tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>"<code>&gt;</code>",  here, is an input/output redirection operator;
+the shell arranges that the standard-output of
+the <code>echo</code> command is written to the file <code>message.txt</code>.</p></div>
+<div class="paragraph"><p>The shell arranges that the file is opened before the command is executed,
+and then that it is closed afterwards.</p></div>
+<div class="paragraph"><p>This is helpful, because it means that
+the programmer cannot inadvertently forget to close the file.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>It is common to write shell scripts which open and close thousands of files, but
+this convenient syntax (and the under-the-covers work done by the shell
+itself) ensures that files are opened and closed in a disciplined way.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reading_files">Reading Files</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_code_open_code_function">The <code>open()</code> function</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In python, the built-in function <code>open()</code> opens a file&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>f <span style="color: #990000">=</span> <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"/etc/passwd"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The python interpreter opens the indicated file&#8201;&#8212;&#8201;in the example, this is
+<code>/etc/passwd</code>, the password file&#8201;&#8212;&#8201;and returns a <em>file object</em> representing
+the open file.</p></div>
+<div class="paragraph"><p>The file object is a python wrapper around the underlying file descriptor.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_the_code_close_code_method">The <code>close()</code> method</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Later, we use the file&#8217;s <code>close()</code> method to close the file&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>f <span style="color: #990000">=</span> <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"/etc/passwd"</span><span style="color: #990000">)</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># Read data from f.</span></span>
+
+f<span style="color: #990000">.</span><span style="color: #000000">close</span><span style="color: #990000">()</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The <code>open()</code> function and the <code>file.close()</code> method map more or less
+directly to the corresponding underlying system calls.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_the_code_with_code_statement">The <code>with</code> statement</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The important point from the discussion above about system calls is this:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>every time we open a file we must make sure that it is closed again</em>.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>If we don&#8217;t do this, then our program might fail.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>To <em>enforce</em> this symmetry, Python provides a special syntax for reading
+and writing files, a syntax which allows the python interpreter to ensure that files
+are opened and closed correctly.</p></div>
+<div class="paragraph"><p>Here is an example&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   some_lines <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span>some_lines<span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Explanation:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<code>open()</code> is a built-in function.
+</p>
+</li>
+<li>
+<p>
+<code>open("some-file.txt")</code> is an expression, it evaluates to a <em>file object</em>.
+</p>
+<div class="paragraph"><p>The argument is the name of the file to open (a string), and the result is
+a file object representing the open file.</p></div>
+</li>
+<li>
+<p>
+Python interpreter arranges that the variable <code>f</code> is assigned to our newly-opened file object.
+</p>
+<div class="paragraph"><p>This can be any variable name of your choice.</p></div>
+</li>
+<li>
+<p>
+The "<code>with &#8230; as &#8230;:</code>" is a new python statement which encloses a block
+of code.
+</p>
+<div class="paragraph"><p>As with other python statements, the extent of the block of code
+is delimited by indentation.</p></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>The python interpreter <em>guarantees</em> that
+the file will be closed when the body of the <code>with</code> statement exits.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>In the example above, there is just one
+statement within the body of the <code>with</code> statement, but in general there
+can be as many as are required.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>File objects implement several methods for reading data;
+however, for our purposes, we will consider just three&#8230;</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_code_file_readlines_code"><code>file.readlines()</code></h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Read all of the remaining lines of a text file</div>
+<div class="paragraph"><p><code>file.readlines()</code> reads <em>all of the remaining lines</em> of a text file,
+returning a list containing those lines as strings.</p></div>
+<div class="paragraph"><p><strong>Newline characters are retained at the end of each line.</strong></p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Here is an example&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"test.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   lines <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>lines<span style="color: #990000">):</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #000000">len</span><span style="color: #990000">(</span>lines<span style="color: #990000">[</span>i<span style="color: #990000">]),</span> lines<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #FF0000">"done"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title"><code>test.txt</code></div>
+<div class="content">
+<pre><code>dog
+cat
+mouse</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Standard output</div>
+<div class="content">
+<pre><code>4 dog
+
+4 cat
+
+6 mouse
+
+done</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Observe that the length of the "dog" string is 4, and the length of the
+"mouse" string is 6.</p></div>
+<div class="paragraph"><p>Observe also that there appear to be extra empty lines in the output.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Both of these artefacts arise because each line contains the characters of
+the word at hand, and also a trailing newline character.</p></div>
+<div class="paragraph"><p>That trailing newline character is often unhelpful, so we can remove it
+like this&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"test.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   lines <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">readlines</span><span style="color: #990000">()</span>
+
+i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+<span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>lines<span style="color: #990000">):</span>
+   lines<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">=</span> lines<span style="color: #990000">[</span>i<span style="color: #990000">].</span><span style="color: #000000">rstrip</span><span style="color: #990000">()</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #000000">len</span><span style="color: #990000">(</span>lines<span style="color: #990000">[</span>i<span style="color: #990000">]),</span> lines<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+   i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span>
+
+<span style="color: #0000FF">print</span><span style="color: #990000">(</span><span style="color: #FF0000">"done"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Standard output</div>
+<div class="content">
+<pre><code>3 dog
+3 cat
+5 mouse
+done</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_code_file_readline_code"><code>file.readline()</code></h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Read just the next line of text from a file</div>
+<div class="paragraph"><p>It is also possible to read just a single line from a file&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>f<span style="color: #990000">.</span><span style="color: #000000">readline</span><span style="color: #990000">().</span><span style="color: #000000">rstrip</span><span style="color: #990000">())</span>    <span style="font-style: italic"><span style="color: #9A1900"># Print just the first line from the file.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note that this is <code>file.readline()</code>, without an "<code>s</code>".</p></div>
+<div class="paragraph"><p>As with <code>file.readlines()</code>, newline characters are retained.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_code_file_read_code"><code>file.read()</code></h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The <code>file.read()</code> method reads an arbitrary amount of data from a file.</p></div>
+<div class="paragraph"><p>With no arguments, <code>file.read()</code> reads the entire file&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">().</span><span style="color: #000000">rstrip</span><span style="color: #990000">())</span>       <span style="font-style: italic"><span style="color: #9A1900"># Copy the entire file to standard output (almost).</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>With an integer argument, <code>file.read(n)</code> reads up to $n$ characters&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">4</span><span style="color: #990000">))</span>               <span style="font-style: italic"><span style="color: #9A1900"># Print just the first four characters from the file.</span></span>
+   <span style="color: #0000FF">print</span><span style="color: #990000">(</span>f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">6</span><span style="color: #990000">))</span>               <span style="font-style: italic"><span style="color: #9A1900"># And print the next six characters.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p><code>file.read(n)</code> returns a string;
+the length of the string is the number of characters which were actually read.</p></div>
+<div class="paragraph"><p>That may not be as many as were requested, because there
+may not be the requested number of characters left to read in the file.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   data <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">1000000000</span><span style="color: #990000">)</span>       <span style="font-style: italic"><span style="color: #9A1900"># Read however many characters are available, up to</span></span>
+                                   <span style="font-style: italic"><span style="color: #9A1900"># a maximum of one billion.  Most likely, far fewer</span></span>
+                                   <span style="font-style: italic"><span style="color: #9A1900"># than one billion characters will actually be read.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>When the end of file is reached, <code>file.read()</code> and <code>file.readline()</code> return a string of length <code>0</code>.</p></div>
+<div class="paragraph"><p>For example&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   ch <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">)</span>
+   <span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>ch<span style="color: #990000">):</span>
+      <span style="color: #0000FF">print</span><span style="color: #990000">(</span>ch<span style="color: #990000">)</span>
+      ch <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>This copies characters from the file to standard output, one character per line.</p></div>
+<div class="paragraph"><p>When there are no characters left, <code>len(ch)</code> is <code>0</code>, and our loop stops
+iterating.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_writing_files">Writing Files</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>We can also open a file for writing, and write to it&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"some-file.txt"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"w"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   f<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span><span style="color: #FF0000">"Hello world.\n"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The additional argument <code>"w"</code> here tells <code>open()</code> to open the file for writing
+(not reading, which is the default).</p></div>
+<div class="paragraph"><p>The <code>file.write()</code> method writes data (usually a string) to a file.</p></div>
+<div class="paragraph"><p>In the example, we write just one line to the file;
+in general, however, we can write as many lines as are required.</p></div>
+<div class="paragraph"><p>When <code>file.write()</code> is called
+repeatedly, the new output is simply appended to the existing output&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span><span style="color: #FF0000">"mary.txt"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"w"</span><span style="color: #990000">)</span> as f<span style="color: #990000">:</span>
+   f<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span><span style="color: #FF0000">"Mary had a little lamb,\n"</span><span style="color: #990000">)</span>
+   f<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span><span style="color: #FF0000">"its fleece was white as snow.\n"</span><span style="color: #990000">)</span>
+   f<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span><span style="color: #FF0000">"And everywhere that Mary went\n"</span><span style="color: #990000">)</span>
+   f<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span><span style="color: #FF0000">"the lamb was sure to go.\n"</span><span style="color: #990000">)</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Unlike <code>print</code>, <code>file.write()</code> <em>does not append a newline character</em> to
+the output.</p></div>
+<div class="paragraph"><p>If you require a newline character, then you must add one manually.
+Within a string literal, the escape sequence "<code>\n</code>" is replaced with a
+newline character.</p></div>
+<div class="paragraph"><p>See the example above.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">Examples</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_concatenate_files">Concatenate files</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Assume that:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+the first command-line argument is the name of an output file, and
+</p>
+</li>
+<li>
+<p>
+all subsequent command-line arguments are the names of input files.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Write a python script which copies the contents of all of the input files
+to the output file.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title">Example invocation</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>$ python3 concatenate<span style="color: #990000">.</span>py out_file<span style="color: #990000">.</span>txt in_file_1<span style="color: #990000">.</span>txt in_file_2<span style="color: #990000">.</span>txt <span style="color: #990000">...</span>
+
+<span style="font-style: italic"><span style="color: #9A1900"># The contents of all of the input files should be written to out_file.txt.</span></span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_solution_1">Solution 1</h3>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+out_file <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>argv<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>               <span style="font-style: italic"><span style="color: #9A1900"># The output file.</span></span>
+in_files <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>argv<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">:]</span>              <span style="font-style: italic"><span style="color: #9A1900"># The input files.</span></span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span>out_file<span style="color: #990000">,</span> <span style="color: #FF0000">"w"</span><span style="color: #990000">)</span> as f_out<span style="color: #990000">:</span>
+   i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+   <span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>in_files<span style="color: #990000">):</span>
+      with <span style="color: #000000">open</span><span style="color: #990000">(</span>in_files<span style="color: #990000">[</span>i<span style="color: #990000">])</span> as f_in<span style="color: #990000">:</span>
+         f_out<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>f_in<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">())</span>    <span style="font-style: italic"><span style="color: #9A1900"># Copy the entire input file to the output file.</span></span>
+      i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The body of the outer <code>with</code> statement here contains more than one
+statement; in fact, it contains an entire loop.</p></div>
+<div class="paragraph"><p>There is no consideration of lines here.  We just read read the <em>entire
+contents</em> of the file, and then write the entire contents of the file.
+Unlike all of the scripts which we have written previously, this script will work
+for binary data too.</p></div>
+<div class="paragraph"><p>We have two files open at the same time, one for reading and one for
+writing.  We have to give the file objects different names (we cannot
+just use <code>f</code> for both).  Here, we choose the suitably descriptive names
+<code>f_in</code> and <code>f_out</code>.</p></div>
+<div class="paragraph"><p>Even if there are thousands of input files, we only ever have two files open
+at the same time.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_solution_2">Solution 2</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The solution above works well if the files are small.</p></div>
+<div class="paragraph"><p>However, for large
+files, solution 1 reads the <em>entire file contents</em> of each file into memory before
+writing those contents to the output file.</p></div>
+<div class="paragraph"><p>Since files can be very large
+indeed, hundred of megabytes or even gigabytes, this can be slow and
+wasteful of memory.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>An alternative, would be to copy data from the input files to the output
+file in reasonably-sized chunks.</p></div>
+<div class="paragraph"><p>This is illustrated below&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+chunk_size <span style="color: #990000">=</span> <span style="color: #993399">4096</span> <span style="color: #990000">*</span> <span style="color: #993399">8</span>
+out_file <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>argv<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>
+in_files <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>argv<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">:]</span>
+
+with <span style="color: #000000">open</span><span style="color: #990000">(</span>out_file<span style="color: #990000">,</span> <span style="color: #FF0000">"w"</span><span style="color: #990000">)</span> as f_out<span style="color: #990000">:</span>
+   i <span style="color: #990000">=</span> <span style="color: #993399">0</span>
+   <span style="color: #0000FF">while</span> i <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>in_files<span style="color: #990000">):</span>
+      with <span style="color: #000000">open</span><span style="color: #990000">(</span>in_files<span style="color: #990000">[</span>i<span style="color: #990000">])</span> as f_in<span style="color: #990000">:</span>
+         chunk <span style="color: #990000">=</span> f_in<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span>
+         <span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>chunk<span style="color: #990000">):</span>
+            f_out<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>chunk<span style="color: #990000">)</span>
+            chunk <span style="color: #990000">=</span> f_in<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span>
+      i <span style="color: #990000">=</span> i <span style="color: #990000">+</span> <span style="color: #993399">1</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_observation">Observation</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The examples above included the following two loops&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>ch <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">)</span>                     <span style="font-style: italic"><span style="color: #9A1900"># Set up the first test.</span></span>
+<span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>ch<span style="color: #990000">):</span>
+   <span style="color: #0000FF">print</span> ch                        <span style="font-style: italic"><span style="color: #9A1900"># Do something</span></span>
+   ch <span style="color: #990000">=</span> f<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">)</span>                  <span style="font-style: italic"><span style="color: #9A1900"># Set up the next test.</span></span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>chunk <span style="color: #990000">=</span> f_in<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span>      <span style="font-style: italic"><span style="color: #9A1900"># Set up the first test.</span></span>
+<span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>chunk<span style="color: #990000">):</span>
+   f_out<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>chunk<span style="color: #990000">)</span>              <span style="font-style: italic"><span style="color: #9A1900"># Do something</span></span>
+   chunk <span style="color: #990000">=</span> f_in<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span>   <span style="font-style: italic"><span style="color: #9A1900"># Set up the next test.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The first iterates over the individual characters of a file, and the second
+iterates over "chunks" of size 4096 times 8 bytes.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Now, consider the following loop&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>line <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">():</span>                <span style="font-style: italic"><span style="color: #9A1900"># Set up the first test.</span></span>
+<span style="color: #0000FF">while</span> line <span style="color: #990000">!=</span> <span style="color: #FF0000">"end"</span><span style="color: #990000">:</span>           <span style="font-style: italic"><span style="color: #9A1900"># Do test.</span></span>
+   <span style="color: #0000FF">print</span> line                  <span style="font-style: italic"><span style="color: #9A1900"># Do something</span></span>
+   line <span style="color: #990000">=</span> <span style="color: #000000">input</span><span style="color: #990000">():</span>             <span style="font-style: italic"><span style="color: #9A1900"># Set up the next test.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Observe that&#8201;&#8212;&#8201;while the details differ&#8201;&#8212;&#8201;the structures of the new loops
+are identical to those of the loops with which we are already familiar.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_standard_input_and_output">Standard input and output</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Standard input and output are also represented by files objects&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #000080">import</span> sys
+
+sys<span style="color: #990000">.</span>stdin                         <span style="font-style: italic"><span style="color: #9A1900"># A file object representing standard input.</span></span>
+sys<span style="color: #990000">.</span>stdout                        <span style="font-style: italic"><span style="color: #9A1900"># A file object representing standard output.</span></span>
+sys<span style="color: #990000">.</span>stderr                        <span style="font-style: italic"><span style="color: #9A1900"># A file object representing standard error.</span></span></tt></pre></div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Copy standard input to standard output&#8230;</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+<span style="color: #000080">import</span> sys
+
+sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">())</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.9
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">#!/usr/bin/env python3</span></span>
+
+chunk_size <span style="color: #990000">=</span> <span style="color: #993399">4096</span> <span style="color: #990000">*</span> <span style="color: #993399">8</span>
+
+chunk <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span>
+<span style="color: #0000FF">while</span> <span style="color: #993399">0</span> <span style="color: #990000">&lt;</span> <span style="color: #000000">len</span><span style="color: #990000">(</span>chunk<span style="color: #990000">):</span>
+   sys<span style="color: #990000">.</span>stdout<span style="color: #990000">.</span><span style="color: #000000">write</span><span style="color: #990000">(</span>chunk<span style="color: #990000">)</span>
+   chunk <span style="color: #990000">=</span> sys<span style="color: #990000">.</span>stdin<span style="color: #990000">.</span><span style="color: #000000">read</span><span style="color: #990000">(</span>chunk_size<span style="color: #990000">)</span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starter_tasks">Starter Tasks</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_task_1">Task 1</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Write a python script named <code>write-hello.py</code> which writes the message
+indicated below into a file named <code>hello.txt</code>.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title"><code>hello.txt</code></div>
+<div class="content">
+<pre><code>Hello world.</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_task_2">Task 2</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Task</div>
+<div class="paragraph"><p>Assume a file named <code>input.txt</code> in the current working directory.</p></div>
+<div class="paragraph"><p>Write a python script named <code>read-file.py</code> which copies the contents of a
+that file to standard output.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="title"><code>input.txt</code></div>
+<div class="content">
+<pre><code>Mary had a little lamb
+its fleece was white as snow.
+And everywhere that Mary went
+the lamb was sure to go.</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example standard output</div>
+<div class="content">
+<pre><code>Mary had a little lamb
+its fleece was white as snow.
+And everywhere that Mary went
+the lamb was sure to go.</code></pre>
+</div></div>
+<script src="/einstein/common.js"></script>
+<script src="/einstein/instrument.js"></script>
+<script type="text/javascript" src="https://einstein.computing.dcu.ie/npm/mathjax/MathJax.js?config=AM_CHTML">
+</script>
+
+<script> type="text/javascript"
+   MathJax.Hub.Config({
+     asciimath2jax: { delimiters: [['$','$']] }
+   });
+</script>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2021-12-09 14:30:59 IST
+</div>
+</div>
+</body>
+</html>
